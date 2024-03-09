@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,6 @@ Route::get('/', function () {
         "title"=>"Dashboard"
     ]);
 });
+
+Route::resource('kategori',CategoryController::class)
+->except('show','destroy','create');
