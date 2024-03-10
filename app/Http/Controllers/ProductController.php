@@ -72,7 +72,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         return view('product.show')->with([
             "title" => "Detail Produk",
-            "product" => $product
+            "data" => $product
         ]);
     }
 

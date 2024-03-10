@@ -88,28 +88,28 @@
                 <tr>
                     <th>Nama Produk</th>
                     <td>:</td>
-                    <td>{{ $product->name }}</td>
+                    <td>{{ $data->name }}</td>
                 </tr>
                 <tr>
                     <th>Kategori Produk</th>
                     <td>:</td>
-                    <td>{{ $product->category->name }}</td>
+                    <td>{{ $data->category->name }}</td>
                 </tr>
                 <tr>
                     <th>Stok</th>
                     <td>:</td>
-                    <td>{{ $product->stock }}</td>
+                    <td>{{ $data->stock }}</td>
                 </tr>
                 <tr>
                     <th>Harga</th>
                     <td>:</td>
-                    <td>@money($product->price)</td>
+                    <td>@money($data->price)</td>
                 </tr>
                 <tr>
                     <th>Deskripsi</th>
                     <td>:</td>
 
-                    <td>{{ $product->description }}</td>
+                    <td>{{ $data->description }}</td>
                 </tr>
             </table>
         </div>
