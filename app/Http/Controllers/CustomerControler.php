@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Category;
 use App\Models\customer;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -12,7 +14,7 @@ class CustomerControler extends Controller
     public function index(){
         return view('customer.tabel',[
             "title" => "Customer",
-            "data" => Customer::all()
+            "data" => customer::all()
         ]);
     }
 
