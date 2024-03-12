@@ -5,7 +5,6 @@ use App\Http\Controllers\CustomerControler;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
-use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +36,15 @@ Route::resource('pengguna',UserController::class)->except('destroy','create','sh
 Route::get('login',[LoginController::class,'loginView'])->name('login');
 Route::post('login',[LoginController::class,'authenticate']);
 Route::post('logout',[LoginController::class,'logout'])->middleware('auth');
+
+
+Route::get('penjualan',function(){
+    return view('penjualan.index',[
+        "title"=>"Penjualan"
+    ]);
+})->middleware('auth');
+Route::get('order',function(){
+    return view('penjualan.orders',[
+        "title"=>"Order"
+    ]);
+})->middleware('auth');
