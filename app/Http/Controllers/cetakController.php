@@ -19,5 +19,4 @@ class cetakController extends Controller
             'dataOrderDetail'=>$orderDetail
         ]);
     }
-
 }
