@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\cetakController;
 use App\Http\Controllers\CustomerControler;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
@@ -48,3 +49,6 @@ Route::get('order',function(){
         "title"=>"Order"
     ]);
 })->middleware('auth');
+
+
+Route::get('cetakReceipt',[cetakController::class,'receipt'])->name('cetakReceipt')->middleware('auth');

@@ -7,6 +7,7 @@ use App\Models\order_detail;
 use App\Models\product;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
 class Orders extends Component
@@ -77,6 +78,21 @@ class Orders extends Component
         } catch (Exception $e) {
             dd($e);
         }
+    }
+
+    public function receipt($id){
+        $order_detail=order_detail::select('*')->where('order_id','=',$id)->get();
+        foreach($order_detail as $od){
+            $stocklama=product::select('stock')->where('id','=',$od->product_id)->sum('stock');
+            $stock=$stocklama-$od->qty;
+            try{
+                product::where('id','=',$od->product_id)->update([
+                    'stock' => $stock
+                ]);
+            }catch(Exception $e){
+                dd($e);
+            }
+        }return Redirect::route('cetakReceipt')->with(['id'=>$id]);
     }
 
 

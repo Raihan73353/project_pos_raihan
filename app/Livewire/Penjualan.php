@@ -20,16 +20,26 @@ class Penjualan extends Component
     public function store(){
         $this->validate(['customer_id'=>'required']);
 
-        order::create([
-            'invoice'=>$this->invoice(),
-            'customer_id'=>$this->customer_id(),
-            'user_id'=>Auth::user()->id,
-            'total'=>'0'
-        ]);
+    //     order::create([
+    //         'invoice'=>$this->invoice(),
+    //         'customer_id'=>$this->customer_id(),
+    //         'user_id'=>Auth::user()->id,
+    //         'total'=>'0'
+    //     ]);
 
-        $this->customer_id=NULL;
-        return redirect()->to('order');
-    }
+    //     $this->customer_id=NULL;
+    //     return redirect()->to('order');
+    // }
+
+    order::create([
+        'invoice'=>$this->invoice(),
+        'customer_id'=>$this->customer_id,
+        'user_id'=>Auth::user()->id,
+        'total'=>'0'
+    ]);
+    $this->customer_id=NULL;
+    return redirect()->to('order');
+}
 
     public function invoice(){
         $order=order::orderBy('created_at','DESC');
